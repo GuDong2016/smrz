@@ -4,7 +4,10 @@ import com.ccf.smrz.servieclient.base.LoginRequestBean;
 import com.ccf.smrz.servieclient.base.RegisterRequestBean;
 import com.ccf.smrz.servieclient.base.SmrzService;
 import com.ccf.smrz.servieclient.base.SmrzServiceService;
+import com.ccf.smrz.userinfo.dao.IUserInfoDao;
+import com.ccf.smrz.userinfo.domain.UserInfo;
 import com.ccf.smrz.userinfo.service.IUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.namespace.QName;
@@ -15,6 +18,8 @@ import java.net.URL;
  */
 @Service("userInfoService")
 public class UserInfoService implements IUserInfoService {
+    @Autowired
+    IUserInfoDao userInfoDao;
     @Override
     public String doLogin(LoginRequestBean loginRequestBean) {
         String ret = null;
@@ -51,5 +56,10 @@ public class UserInfoService implements IUserInfoService {
             e.printStackTrace();
         }
         return ret;
+    }
+
+    @Override
+    public int updatePassword(UserInfo userInfo) {
+        return this.userInfoDao.updatePassword(userInfo);
     }
 }

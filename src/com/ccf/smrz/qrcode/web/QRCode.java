@@ -59,8 +59,8 @@ public class QRCode {
             vcode = paraMap.get("vcode");
         }
 
-        int width = 300;
-        int height = 300;
+        int width = 200;
+        int height = 200;
         //二维码的图片格式
         String format = "gif";
         Hashtable hints = new Hashtable();

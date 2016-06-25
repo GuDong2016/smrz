@@ -20,6 +20,17 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+
+    <filter>
+        <filter-name>LoginServlet</filter-name>
+        <filter-class>com.ccf.smrz.filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginServlet</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -47,6 +58,7 @@
         <servlet-name>jpegServlet</servlet-name>
         <url-pattern>/erweima.gif</url-pattern>
     </servlet-mapping>
+
 
 
 

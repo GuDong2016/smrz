@@ -56,28 +56,30 @@ public class QRCodeServlet extends HttpServlet {
         Map<String, String> paraMap = gson.fromJson(responeStr, new TypeToken<Map<String, String>>() {
         }.getType());
 
-        String vcode = "验证码获取失败";
-        if (paraMap.get("vcode") != null) {
-            vcode = paraMap.get("vcode");
-        }
+      if("9900".equals(paraMap.get("msg"))){
+          String vcode = "";
+          if (paraMap.get("vcode") != null) {
+              vcode = paraMap.get("vcode");
+          }
 
-        int width = 300;
-        int height = 300;
-        //二维码的图片格式
-        String format = "gif";
-        Hashtable hints = new Hashtable();
-        //内容所使用编码
-        hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-        BitMatrix bitMatrix = null;
-        try {
-            bitMatrix = new MultiFormatWriter().encode(vcode,
-                    BarcodeFormat.QR_CODE, width, height, hints);
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-        //生成二维码
-        // File outputFile = new File("d:"+File.separator+"new.gif");
-        MatrixToImageWriter.writeToFile(bitMatrix, format, response.getOutputStream());
-        response.getOutputStream().close();
+          int width = 300;
+          int height = 300;
+          //二维码的图片格式
+          String format = "gif";
+          Hashtable hints = new Hashtable();
+          //内容所使用编码
+          hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+          BitMatrix bitMatrix = null;
+          try {
+              bitMatrix = new MultiFormatWriter().encode(vcode,
+                      BarcodeFormat.QR_CODE, width, height, hints);
+          } catch (WriterException e) {
+              e.printStackTrace();
+          }
+          //生成二维码
+          // File outputFile = new File("d:"+File.separator+"new.gif");
+          MatrixToImageWriter.writeToFile(bitMatrix, format, response.getOutputStream());
+          response.getOutputStream().close();
+      }
     }
 }

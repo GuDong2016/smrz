@@ -4,12 +4,13 @@
     <!-- 别名 -->
     <typeAliases>
         <!--<typeAlias type="com.hoo.entity.Account" alias="account"/>-->
+        <typeAlias type="com.ccf.smrz.userinfo.domain.UserInfo" alias="userinfo"/>
 
     </typeAliases>
 
     <mappers>
         <!--<mapper resource="com/smart/sms/user/dao/User.xml"/>-->
-
+        <mapper resource="com/ccf/smrz/userinfo/dao/UserInfo.xml"/>
     </mappers>
 
 </configuration>

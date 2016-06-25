@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Properties" %>
+<%@ page import="java.io.FileNotFoundException" %>
+<%@ page import="java.io.IOException" %><%--
   Created by IntelliJ IDEA.
   User: dell
   Date: 2016/5/5
@@ -7,8 +9,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    Properties pro = new Properties();
+    try{
+        pro.load(request.getServletContext().getResourceAsStream("/WEB-INF/host.properties"));
+    }
+    catch(FileNotFoundException e){
+        out.println(e);
+    }
+    catch(IOException e){out.println(e);}
+    String host = pro.getProperty("host");
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+    String basePath = request.getScheme() + "://" + host
+            //+ ":" + request.getServerPort()
             + path + "/";
 %>
 <html>
@@ -21,11 +33,10 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>js/jquery-easyui/demo/demo.css">
     <script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>js/jquery-easyui/jquery.easyui.min.js"></script>
-   <%-- <script type="text/javascript" src='<%=basePath%>js/outlook.js'></script>--%>
+    <%-- <script type="text/javascript" src='<%=basePath%>js/outlook.js'></script>--%>
 
     <script type="text/javascript">
-        function changePassword(title)
-        {
+        function changePassword(title) {
             if ($("#tt").tabs("exists", title)) {
                 $("#tt").tabs("select", title);
             } else {
@@ -33,6 +44,42 @@
                     title: '修改密码',
                     href: '<%=basePath%>admin/changePassword.do',
                     closable: true
+                });
+            }
+        }
+
+        function updatePassword() {
+            var pw = $("#password").val();
+            var c_pw = $("#confirm_password").val();
+
+            if (pw != c_pw) {
+                alert("两次输入的密码不一样！");
+            }
+            else {
+                $('#updatepassword').form('submit', {
+                    url: '<%=basePath%>admin/updatePassword.do',
+                    // data: email,
+                    onSubmit: function () {
+                        return $(this).form('validate');
+                    },
+                    success: function (result) {
+                        var result = eval('(' + result + ')');
+                        // alert(result);
+                        //alert(result);
+                        if (!result.success) {
+                            // alert(result.success);
+                            // alert(result.errorMsg);
+                            //location.href = '<%=basePath%>admin/register.do';
+                            $.messager.show({    // show error message
+                                title: 'Error',
+                                msg: result.errorMsg
+                            });
+                            alert(result.errorMsg);
+
+                        } else {
+                            alert("修改成功！");
+                        }
+                    }
                 });
             }
         }
@@ -65,9 +112,10 @@
 </head>
 <body class="easyui-layout">
 <div id="cc" class="easyui-layout" style="width:100%;height:95%;">
-    <div data-options="region:'north',border:false" style="height:40px;">
+    <div data-options="region:'north',border:false" style="height:58px;">
         <%--<img alt="logo" src="images/logo.png" style="padding: 20px 0 0 20px;">--%>
-        <p aria-atomic="true">${userinfo.realname},欢迎进入快递实名制认证系统</p>
+        <%--<p aria-atomic="true">${userinfo.realname},欢迎物流实名制认证系统</p>--%>
+        <img src="<%=basePath%>images/register/yemei4.png" style="background-size: contain">
     </div>
     <div data-options="region:'west',title:'菜单',split:true" style="width:200px;">
         <div id="aa" class="easyui-accordion" data-options="fit:true,border:false">
@@ -92,7 +140,7 @@
     <div data-options="region:'center',border:false,plain:true">
         <div id="tt" class="easyui-tabs" fit=true>
             <div title="首页" style="text-align: center;font-size: 24px;">
-                <p>欢迎进入数据自动抓取系统系统</p>
+                <p>欢迎物流实名制认证系统</p>
             </div>
         </div>
     </div>

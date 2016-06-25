@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Properties" %>
+<%@ page import="java.io.FileNotFoundException" %>
+<%@ page import="java.io.IOException" %><%--
   Created by IntelliJ IDEA.
   User: dell
   Date: 2016/4/29
@@ -7,8 +9,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
+    Properties pro = new Properties();
+    try{
+        pro.load(request.getServletContext().getResourceAsStream("/WEB-INF/host.properties"));
+    }
+    catch(FileNotFoundException e){
+        out.println(e);
+    }
+    catch(IOException e){out.println(e);}
+    String host = pro.getProperty("host");
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+    String basePath = request.getScheme() + "://" + host
+            //+ ":" + request.getServerPort()
             + path + "/";
 %>
 <html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - smrz@123.206.60.110" uuid="102beb6a-e96f-43d5-8327-81bd302a91f1">
+    <database-info product="MySQL" version="5.6.26" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="smrz"/>
+      <table id="2" parent="1" name="t_loginfo">
+        <comment>日志信息</comment>
+      </table>
+      <table id="3" parent="1" name="t_userinfo"/>
+      <table id="4" parent="1" name="t_vcode"/>
+      <column id="5" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="6" parent="2" name="createtime">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="7" parent="2" name="updatetime">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="8" parent="2" name="ifuse">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="9" parent="2" name="logintype">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="10" parent="2" name="phone">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="11" parent="2" name="mail">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="12" parent="2" name="idnum">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="13" parent="2" name="ip">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="14" parent="2" name="osversion">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="15" parent="2" name="opertime">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="16" parent="2" name="phonemodel">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="17" parent="2" name="locationx">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="18" parent="2" name="locationy">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="19" parent="2" name="opertype">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="20" parent="2" name="appversion">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="21" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="22" parent="3" name="createtime">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="23" parent="3" name="updatetime">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="24" parent="3" name="ifuse">
+        <data-type>varchar(1)</data-type>
+      </column>
+      <column id="25" parent="3" name="phone">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="26" parent="3" name="mail">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="27" parent="3" name="realname">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="28" parent="3" name="password">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="29" parent="3" name="phonetype">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="30" parent="3" name="idnum">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="31" parent="3" name="openid">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="32" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="33" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="34" parent="4" name="idnum">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="35" parent="4" name="vcode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="36" parent="4" name="mvcode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="37" parent="4" name="createtime">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="38" parent="4" name="ifuse">
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)</data-type>
+      </column>
+      <key id="39" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
