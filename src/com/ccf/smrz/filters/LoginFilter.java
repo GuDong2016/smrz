@@ -21,7 +21,7 @@ public class LoginFilter extends HttpServlet implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        if ( request.getSession().getAttribute("userinfo") == null) {
+        if (request.getSession().getAttribute("userinfo") == null) {
             if ("/admin/getKaptchaImage.do".equals(request.getServletPath())) {
                 filterChain.doFilter(servletRequest, servletResponse);
                 return;
@@ -32,7 +32,6 @@ public class LoginFilter extends HttpServlet implements Filter {
             }
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             return;
-
         }
         filterChain.doFilter(servletRequest, servletResponse);
         return;
